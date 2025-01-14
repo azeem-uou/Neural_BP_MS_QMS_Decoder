@@ -1,0 +1,125 @@
+gpu_id=0
+filename=wman_N0576_R34_z24
+z_factor=24
+clip_llr=20
+decoding_type=1
+q_bit=5
+sharing=[4, 0, 5]
+iters_max=20
+init_cn_weight=1
+init_ch_weight=1
+cn_mode=parallel
+loss_option=0
+loss_type=1
+sampling_type=0
+SNR_array=[3.0, 4.0]
+batch_size=20
+training_num=30000
+valid_num=50000
+epoch_input=100
+learn_rate=0.001
+seed_in=42
+
+[Epoch 1] valid loss=0.0120, valid time=28.12s
+SNR=3.000 BER=7.66e-03 FER=1.86e-01
+SNR=4.000 BER=1.99e-05 FER=8.40e-04
+[Epoch 1] training loss=0.0096, train time=73.27s
+[Info] Best model saved.
+Epoch 1 done
+
+[Epoch 2] valid loss=0.0092, valid time=27.77s
+SNR=3.000 BER=6.99e-03 FER=1.91e-01
+SNR=4.000 BER=1.49e-05 FER=8.40e-04
+[Epoch 2] training loss=0.0091, train time=73.18s
+[Info] Best model saved.
+Epoch 2 done
+
+[Epoch 3] valid loss=0.0089, valid time=26.17s
+SNR=3.000 BER=6.80e-03 FER=1.86e-01
+SNR=4.000 BER=1.93e-05 FER=1.00e-03
+[Epoch 3] training loss=0.0091, train time=70.96s
+[Info] Best model saved.
+Epoch 3 done
+
+[Epoch 4] valid loss=0.0091, valid time=26.86s
+SNR=3.000 BER=6.91e-03 FER=1.89e-01
+SNR=4.000 BER=1.41e-05 FER=7.20e-04
+[Epoch 4] training loss=0.0091, train time=70.69s
+Epoch 4 done
+
+[Epoch 5] valid loss=0.0090, valid time=27.50s
+SNR=3.000 BER=6.86e-03 FER=1.88e-01
+SNR=4.000 BER=1.50e-05 FER=6.00e-04
+[Epoch 5] training loss=0.0089, train time=71.90s
+Epoch 5 done
+
+[Epoch 6] valid loss=0.0090, valid time=27.58s
+SNR=3.000 BER=6.87e-03 FER=1.88e-01
+SNR=4.000 BER=1.58e-05 FER=7.60e-04
+[Epoch 6] training loss=0.0090, train time=69.54s
+Epoch 6 done
+
+[Epoch 7] valid loss=0.0088, valid time=25.79s
+SNR=3.000 BER=6.67e-03 FER=1.84e-01
+SNR=4.000 BER=2.01e-05 FER=9.20e-04
+[Epoch 7] training loss=0.0090, train time=69.39s
+[Info] Best model saved.
+Epoch 7 done
+
+[Epoch 8] valid loss=0.0089, valid time=26.06s
+SNR=3.000 BER=6.77e-03 FER=1.86e-01
+SNR=4.000 BER=3.74e-05 FER=1.52e-03
+[Epoch 8] training loss=0.0090, train time=75.32s
+Epoch 8 done
+
+[Epoch 9] valid loss=0.0091, valid time=29.37s
+SNR=3.000 BER=6.91e-03 FER=1.87e-01
+SNR=4.000 BER=1.80e-05 FER=8.00e-04
+[Epoch 9] training loss=0.0090, train time=75.11s
+Epoch 9 done
+
+[Epoch 10] valid loss=0.0090, valid time=30.16s
+SNR=3.000 BER=6.80e-03 FER=1.85e-01
+SNR=4.000 BER=2.47e-05 FER=1.16e-03
+[Epoch 10] training loss=0.0092, train time=76.03s
+Epoch 10 done
+
+[Epoch 11] valid loss=0.0092, valid time=26.53s
+SNR=3.000 BER=7.06e-03 FER=1.92e-01
+SNR=4.000 BER=1.38e-05 FER=6.00e-04
+[Epoch 11] training loss=0.0088, train time=71.14s
+Epoch 11 done
+
+[Epoch 12] valid loss=0.0091, valid time=27.01s
+SNR=3.000 BER=6.90e-03 FER=1.90e-01
+SNR=4.000 BER=2.31e-05 FER=1.00e-03
+[Epoch 12] training loss=0.0092, train time=71.18s
+Epoch 12 done
+
+[Epoch 13] valid loss=0.0091, valid time=27.15s
+SNR=3.000 BER=6.91e-03 FER=1.90e-01
+SNR=4.000 BER=2.83e-05 FER=1.40e-03
+[Epoch 13] training loss=0.0093, train time=72.70s
+Epoch 13 done
+
+[Epoch 14] valid loss=0.0091, valid time=27.46s
+SNR=3.000 BER=6.89e-03 FER=1.88e-01
+SNR=4.000 BER=2.17e-05 FER=9.60e-04
+[Epoch 14] training loss=0.0092, train time=73.47s
+Epoch 14 done
+
+[Epoch 15] valid loss=0.0091, valid time=28.83s
+SNR=3.000 BER=6.88e-03 FER=1.88e-01
+SNR=4.000 BER=2.47e-05 FER=1.12e-03
+[Epoch 15] training loss=0.0090, train time=74.57s
+Epoch 15 done
+
+[Epoch 16] valid loss=0.0090, valid time=30.16s
+SNR=3.000 BER=6.86e-03 FER=1.87e-01
+SNR=4.000 BER=1.45e-05 FER=6.80e-04
+[Epoch 16] training loss=0.0089, train time=72.14s
+Epoch 16 done
+
+[Epoch 17] valid loss=0.0090, valid time=27.58s
+SNR=3.000 BER=6.86e-03 FER=1.88e-01
+SNR=4.000 BER=1.50e-05 FER=7.60e-04
