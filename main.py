@@ -202,16 +202,15 @@ def setup_environment(args):
             logging.FileHandler(perf_path, mode='w')
         ]
     )
-    logging.info("<----------Arguments---------->")
+    logging.info("<---------- Arguments ---------->")
     for k, v in vars(args).items():
         logging.info(f"{k}={v}")
-    logging.info("-------------------------------")
     logging.info("")
 
     # Prepare device
     device = torch.device(f"cuda:{args.gpu_id}" if torch.cuda.is_available() else "cpu")
     logging.info(f"Device: {device}")
-
+    logging.info("----------------------------------------------")
     # Initialize RNG
     rng = np.random.RandomState(args.seed_in)
 
