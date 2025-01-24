@@ -96,16 +96,16 @@ def init_parameter(filename, z_factor, CN_mode):
                 edge_to_CN[idx] = m_
                 idx += 1
 
-    # 미리 (E, d_max-1) 짜리 -1로 초기화
+    # Initialize to (E, d_max-1) -1 in advance
     edge_to_ext_edge = -1 * np.ones((E, cn_max_deg-1), dtype=np.int32)
 
     # 채우기
     for c in range(M):
-        edges_c = cn_to_edge[c]  # 이 CN에 연결된 edge들
+        edges_c = cn_to_edge[c]  # Edges connected to CN
         for e in edges_c:
-            # e 자신을 제외한 edge 목록
+            # e list of edges excluding itself
             others = [ex for ex in edges_c if ex != e]
-            # d_max-1 중 앞쪽만 실제 값, 남으면 -1로 둔다
+            # Only the front of d_max-1 is set to the actual value, and if it remains -1
             for i, e2 in enumerate(others):
                 edge_to_ext_edge[e, i] = e2
 
