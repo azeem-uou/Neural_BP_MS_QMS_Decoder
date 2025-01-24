@@ -24,9 +24,9 @@ def save_model_weights(net, args, current_time, best):
     """Example: save learned weights to a text file (optional)."""
     os.makedirs("./Weights", exist_ok=True)
     if best == True:
-        path = f"./Weights/{args.decoding_type}_{args.filename}_Opt_Weight_Iter{args.iters_max}.txt"
+        path = f"./Weights/{args.decoding_type}_{args.sharing}_{args.loss_option}_{args.loss_function}_{args.filename}_Opt_Weight_Iter{args.iters_max}.txt"
     else:
-        path = f"./Weights/{args.decoding_type}_{args.filename}_Weight_Iter{args.iters_max}.txt"
+        path = f"./Weights/{args.decoding_type}_{args.sharing}_{args.loss_option}_{args.loss_function}_{args.filename}_Weight_Iter{args.iters_max}.txt"
 
     with open(path, "w") as f:
         f.write("\t".join(map(str, args.sharing)) + "\n\n")
@@ -36,7 +36,8 @@ def save_model_weights(net, args, current_time, best):
 
 def _write_weight(f, w_param, name_str):
     if w_param is None:
-        f.write(f"{name_str}: None\n\n")
+        #f.write(f"{name_str}: None\n\n")
+        f.write(f"None\n\n")
         return
     arr = w_param.detach().cpu().numpy()
     f.write(f"{name_str}:\n")
@@ -193,7 +194,7 @@ def setup_environment(args):
 
     # Generate current time string for unique perf_path
     current_time = datetime.now().strftime("%m%d_%H%M%S")
-    perf_path = f"./Weights/{args.decoding_type}_{args.filename}_Performance.txt"
+    perf_path = f"./Weights/{args.decoding_type}_{args.sharing}_{args.loss_option}_{args.loss_function}_{args.filename}_Performance.txt"
     logging.basicConfig(
         level=logging.INFO,
         format="%(message)s",
@@ -202,7 +203,7 @@ def setup_environment(args):
             logging.FileHandler(perf_path, mode='w')
         ]
     )
-    logging.info("<---------- Arguments ---------->")
+    logging.info("<------------- Arguments ------------->")
     for k, v in vars(args).items():
         logging.info(f"{k}={v}")
     logging.info("")
@@ -210,7 +211,8 @@ def setup_environment(args):
     # Prepare device
     device = torch.device(f"cuda:{args.gpu_id}" if torch.cuda.is_available() else "cpu")
     logging.info(f"Device: {device}")
-    logging.info("----------------------------------------------")
+    logging.info("<========================================>")
+    logging.info("")
     # Initialize RNG
     rng = np.random.RandomState(args.seed_in)
 
@@ -257,12 +259,12 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--gpu_id', type=int, default=0)
-    parser.add_argument('--filename', type=str, default='wman_N0576_R34_z24')
-    parser.add_argument('--z_factor', type=int, default=24)
+    parser.add_argument('--filename', type=str, default='BCH_63_36')
+    parser.add_argument('--z_factor', type=int, default=1)
     parser.add_argument('--clip_llr', type=float, default=20)
     parser.add_argument('--decoding_type', type=str, default='SP', choices=['SP','MS'])
-    parser.add_argument('--sharing', nargs='+', type=int, default=[3,0,3]) #[cn_weight,ucn_weight,ch_weight], 1: Edges/Iters 2: Node/Iter 3: Iter, 4: Edge, 5: Node
-    parser.add_argument('--iters_max', type=int, default=20)
+    parser.add_argument('--sharing', nargs='+', type=int, default=[1,0,0]) #[cn_weight,ucn_weight,ch_weight], 1: Edges/Iters 2: Node/Iter 3: Iter, 4: Edge, 5: Node
+    parser.add_argument('--iters_max', type=int, default=5)
     parser.add_argument('--fixed_iter', type=int, default=0)
     parser.add_argument('--systematic', type=str, default='off', choices=['off', 'on'])
 
@@ -274,13 +276,13 @@ if __name__ == "__main__":
                         choices=['sequential', 'parallel'],
                         help='Choose the CN update mode: sequential or parallel') 
 
-    parser.add_argument('--loss_option', type=str, default='last', choices = ['multi', 'last'])
+    parser.add_argument('--loss_option', type=str, default='multi', choices = ['multi', 'last'])
     parser.add_argument('--loss_function', type=str, default='FER', choices=['BCE', 'Soft_BER', 'FER'])    
 
     parser.add_argument('--sampling_type', type=str, default='Random',choices=['Random','Read','Collect']) #'Collect"is not yet implemented.
     parser.add_argument('--SNR_array', nargs='+', type=float, 
-                        default=[2,2.5,3.0,3.5,4.0])
-    parser.add_argument('--batch_size', type=int, default=100)
+                        default=[2,2.5,3.0,3.5,4.0,4.5,5.0,5.5,6.0,6.5])
+    parser.add_argument('--batch_size', type=int, default=120)
     parser.add_argument('--training_num', type=int, default=10000)
     parser.add_argument('--valid_num', type=int, default=10000)
     parser.add_argument('--epoch_input', type=int, default=100)
